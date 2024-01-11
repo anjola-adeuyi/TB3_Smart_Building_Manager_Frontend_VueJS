@@ -14,6 +14,9 @@ Before you begin, ensure you have installed the following:
 - NPM (Node Package Manager)
 
 
+![assets/front-1.png](assets/front-1.png)
+![assets/front-2.png](assets/front-2.png)
+
 ## Project setup
 ```
 npm install
@@ -28,6 +31,7 @@ npm run dev
 ```
 npm run build
 ```
+
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
