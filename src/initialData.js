@@ -1,0 +1,765 @@
+const initialWindows = [
+  {
+    id: -19,
+    name: 'Window 1 Room 1 EF',
+    windowStatus: 'CLOSED',
+    roomId: -7,
+  },
+  {
+    id: -10,
+    name: 'Window 1 Room 1 Mines',
+    windowStatus: 'OPENED',
+    roomId: -10,
+  },
+  {
+    id: -21,
+    name: 'Window 1 Room 2 EF',
+    windowStatus: 'OPENED',
+    roomId: -6,
+  },
+  {
+    id: -13,
+    name: 'Window 1 Room 2 Mines',
+    windowStatus: 'CLOSED',
+    roomId: -9,
+  },
+  {
+    id: -25,
+    name: 'Window 1 Room 3 EF',
+    windowStatus: 'CLOSED',
+    roomId: -5,
+  },
+  {
+    id: -15,
+    name: 'Window 1 Room 3 Mines',
+    windowStatus: 'CLOSED',
+    roomId: -8,
+  },
+  {
+    id: -20,
+    name: 'Window 2 Room 1 EF',
+    windowStatus: 'CLOSED',
+    roomId: -7,
+  },
+  {
+    id: -11,
+    name: 'Window 2 Room 1 Mines',
+    windowStatus: 'CLOSED',
+    roomId: -10,
+  },
+  {
+    id: -22,
+    name: 'Window 2 Room 2 EF',
+    windowStatus: 'CLOSED',
+    roomId: -6,
+  },
+  {
+    id: -14,
+    name: 'Window 2 Room 2 Mines',
+    windowStatus: 'CLOSED',
+    roomId: -9,
+  },
+  {
+    id: -26,
+    name: 'Window 2 Room 3 EF',
+    windowStatus: 'OPENED',
+    roomId: -5,
+  },
+  {
+    id: -16,
+    name: 'Window 2 Room 3 Mines',
+    windowStatus: 'CLOSED',
+    roomId: -8,
+  },
+  {
+    id: -12,
+    name: 'Window 3 Room 1 Mines',
+    windowStatus: 'OPENED',
+    roomId: -10,
+  },
+  {
+    id: -23,
+    name: 'Window 3 Room 2 EF',
+    windowStatus: 'CLOSED',
+    roomId: -6,
+  },
+  {
+    id: -27,
+    name: 'Window 3 Room 3 EF',
+    windowStatus: 'CLOSED',
+    roomId: -5,
+  },
+  {
+    id: -17,
+    name: 'Window 3 Room 3 Mines',
+    windowStatus: 'CLOSED',
+    roomId: -8,
+  },
+  {
+    id: -24,
+    name: 'Window 4 Room 2 EF',
+    windowStatus: 'OPENED',
+    roomId: -6,
+  },
+  {
+    id: -18,
+    name: 'Window 4 Room 3 Mines',
+    windowStatus: 'OPENED',
+    roomId: -8,
+  },
+];
+
+const initialRooms = [
+  {
+    id: -7,
+    name: 'Room 1 EF',
+    currentTemp: 20.8,
+    targetTemp: 22,
+    floor: 1,
+    buildingId: -9,
+    windows: [
+      {
+        id: -20,
+        name: 'Window 2 Room 1 EF',
+        windowStatus: 'CLOSED',
+        roomId: -7,
+      },
+      {
+        id: -19,
+        name: 'Window 1 Room 1 EF',
+        windowStatus: 'CLOSED',
+        roomId: -7,
+      },
+    ],
+    heaters: [
+      {
+        id: -19,
+        name: 'Heater 3 Room 1 EF',
+        roomId: -7,
+        heaterStatus: 'ON',
+      },
+      {
+        id: -18,
+        name: 'Heater 2 Room 1 EF',
+        roomId: -7,
+        heaterStatus: 'ON',
+      },
+      {
+        id: -17,
+        name: 'Heater 1 Room 1 EF',
+        roomId: -7,
+        heaterStatus: 'ON',
+      },
+    ],
+  },
+  {
+    id: -10,
+    name: 'Room 1 Mines',
+    currentTemp: 21.3,
+    targetTemp: null,
+    floor: 1,
+    buildingId: -10,
+    windows: [
+      {
+        id: -12,
+        name: 'Window 3 Room 1 Mines',
+        windowStatus: 'OPENED',
+        roomId: -10,
+      },
+      {
+        id: -11,
+        name: 'Window 2 Room 1 Mines',
+        windowStatus: 'CLOSED',
+        roomId: -10,
+      },
+      {
+        id: -10,
+        name: 'Window 1 Room 1 Mines',
+        windowStatus: 'OPENED',
+        roomId: -10,
+      },
+    ],
+    heaters: [
+      {
+        id: -12,
+        name: 'Heater 3 Room 1 Mines',
+        roomId: -10,
+        heaterStatus: 'ON',
+      },
+      {
+        id: -11,
+        name: 'Heater 2 Room 1 Mines',
+        roomId: -10,
+        heaterStatus: 'OFF',
+      },
+      {
+        id: -10,
+        name: 'Heater 1 Room 1 Mines',
+        roomId: -10,
+        heaterStatus: 'ON',
+      },
+    ],
+  },
+  {
+    id: -6,
+    name: 'Room 2 EF',
+    currentTemp: 19.6,
+    targetTemp: 20,
+    floor: 2,
+    buildingId: -9,
+    windows: [
+      {
+        id: -24,
+        name: 'Window 4 Room 2 EF',
+        windowStatus: 'OPENED',
+        roomId: -6,
+      },
+      {
+        id: -23,
+        name: 'Window 3 Room 2 EF',
+        windowStatus: 'CLOSED',
+        roomId: -6,
+      },
+      {
+        id: -22,
+        name: 'Window 2 Room 2 EF',
+        windowStatus: 'CLOSED',
+        roomId: -6,
+      },
+      {
+        id: -21,
+        name: 'Window 1 Room 2 EF',
+        windowStatus: 'OPENED',
+        roomId: -6,
+      },
+    ],
+    heaters: [
+      {
+        id: -22,
+        name: 'Heater 3 Room 2 EF',
+        roomId: -6,
+        heaterStatus: 'OFF',
+      },
+      {
+        id: -21,
+        name: 'Heater 2 Room 2 EF',
+        roomId: -6,
+        heaterStatus: 'ON',
+      },
+      {
+        id: -20,
+        name: 'Heater 1 Room 2 EF',
+        roomId: -6,
+        heaterStatus: 'OFF',
+      },
+    ],
+  },
+  {
+    id: -9,
+    name: 'Room 2 Mines',
+    currentTemp: 20.6,
+    targetTemp: 21,
+    floor: 2,
+    buildingId: -10,
+    windows: [
+      {
+        id: -14,
+        name: 'Window 2 Room 2 Mines',
+        windowStatus: 'CLOSED',
+        roomId: -9,
+      },
+      {
+        id: -13,
+        name: 'Window 1 Room 2 Mines',
+        windowStatus: 'CLOSED',
+        roomId: -9,
+      },
+    ],
+    heaters: [
+      {
+        id: -14,
+        name: 'Heater 2 Room 2 Mines',
+        roomId: -9,
+        heaterStatus: 'OFF',
+      },
+      {
+        id: -13,
+        name: 'Heater 1 Room 2 Mines',
+        roomId: -9,
+        heaterStatus: 'ON',
+      },
+    ],
+  },
+  {
+    id: -5,
+    name: 'Room 3 EF',
+    currentTemp: 21.9,
+    targetTemp: 19,
+    floor: 3,
+    buildingId: -9,
+    windows: [
+      {
+        id: -27,
+        name: 'Window 3 Room 3 EF',
+        windowStatus: 'CLOSED',
+        roomId: -5,
+      },
+      {
+        id: -26,
+        name: 'Window 2 Room 3 EF',
+        windowStatus: 'OPENED',
+        roomId: -5,
+      },
+      {
+        id: -25,
+        name: 'Window 1 Room 3 EF',
+        windowStatus: 'CLOSED',
+        roomId: -5,
+      },
+    ],
+    heaters: [
+      {
+        id: -24,
+        name: 'Heater 2 Room 3 EF',
+        roomId: -5,
+        heaterStatus: 'OFF',
+      },
+      {
+        id: -23,
+        name: 'Heater 1 Room 3 EF',
+        roomId: -5,
+        heaterStatus: 'OFF',
+      },
+    ],
+  },
+  {
+    id: -8,
+    name: 'Room 3 Mines',
+    currentTemp: 20.9,
+    targetTemp: 20.5,
+    floor: 2,
+    buildingId: -10,
+    windows: [
+      {
+        id: -18,
+        name: 'Window 4 Room 3 Mines',
+        windowStatus: 'OPENED',
+        roomId: -8,
+      },
+      {
+        id: -17,
+        name: 'Window 3 Room 3 Mines',
+        windowStatus: 'CLOSED',
+        roomId: -8,
+      },
+      {
+        id: -16,
+        name: 'Window 2 Room 3 Mines',
+        windowStatus: 'CLOSED',
+        roomId: -8,
+      },
+      {
+        id: -15,
+        name: 'Window 1 Room 3 Mines',
+        windowStatus: 'CLOSED',
+        roomId: -8,
+      },
+    ],
+    heaters: [
+      {
+        id: -16,
+        name: 'Heater 2 Room 3 Mines',
+        roomId: -8,
+        heaterStatus: 'OFF',
+      },
+      {
+        id: -15,
+        name: 'Heater 1 Room 3 Mines',
+        roomId: -8,
+        heaterStatus: 'ON',
+      },
+    ],
+  },
+];
+
+const initialBuildings = [
+  {
+    id: -9,
+    name: 'EF',
+    outsideTemperature: -13.4,
+    rooms: [
+      {
+        id: -7,
+        name: 'Room 1 EF',
+        currentTemp: 20.8,
+        targetTemp: 22,
+        floor: 1,
+        buildingId: -9,
+        windows: [
+          {
+            id: -20,
+            name: 'Window 2 Room 1 EF',
+            windowStatus: 'CLOSED',
+            roomId: -7,
+          },
+          {
+            id: -19,
+            name: 'Window 1 Room 1 EF',
+            windowStatus: 'CLOSED',
+            roomId: -7,
+          },
+        ],
+        heaters: [
+          {
+            id: -19,
+            name: 'Heater 3 Room 1 EF',
+            roomId: -7,
+            heaterStatus: 'ON',
+          },
+          {
+            id: -18,
+            name: 'Heater 2 Room 1 EF',
+            roomId: -7,
+            heaterStatus: 'ON',
+          },
+          {
+            id: -17,
+            name: 'Heater 1 Room 1 EF',
+            roomId: -7,
+            heaterStatus: 'ON',
+          },
+        ],
+      },
+      {
+        id: -6,
+        name: 'Room 2 EF',
+        currentTemp: 19.6,
+        targetTemp: 20,
+        floor: 2,
+        buildingId: -9,
+        windows: [
+          {
+            id: -24,
+            name: 'Window 4 Room 2 EF',
+            windowStatus: 'OPENED',
+            roomId: -6,
+          },
+          {
+            id: -23,
+            name: 'Window 3 Room 2 EF',
+            windowStatus: 'CLOSED',
+            roomId: -6,
+          },
+          {
+            id: -22,
+            name: 'Window 2 Room 2 EF',
+            windowStatus: 'CLOSED',
+            roomId: -6,
+          },
+          {
+            id: -21,
+            name: 'Window 1 Room 2 EF',
+            windowStatus: 'OPENED',
+            roomId: -6,
+          },
+        ],
+        heaters: [
+          {
+            id: -22,
+            name: 'Heater 3 Room 2 EF',
+            roomId: -6,
+            heaterStatus: 'OFF',
+          },
+          {
+            id: -21,
+            name: 'Heater 2 Room 2 EF',
+            roomId: -6,
+            heaterStatus: 'ON',
+          },
+          {
+            id: -20,
+            name: 'Heater 1 Room 2 EF',
+            roomId: -6,
+            heaterStatus: 'OFF',
+          },
+        ],
+      },
+      {
+        id: -5,
+        name: 'Room 3 EF',
+        currentTemp: 21.9,
+        targetTemp: 19,
+        floor: 3,
+        buildingId: -9,
+        windows: [
+          {
+            id: -27,
+            name: 'Window 3 Room 3 EF',
+            windowStatus: 'CLOSED',
+            roomId: -5,
+          },
+          {
+            id: -26,
+            name: 'Window 2 Room 3 EF',
+            windowStatus: 'OPENED',
+            roomId: -5,
+          },
+          {
+            id: -25,
+            name: 'Window 1 Room 3 EF',
+            windowStatus: 'CLOSED',
+            roomId: -5,
+          },
+        ],
+        heaters: [
+          {
+            id: -24,
+            name: 'Heater 2 Room 3 EF',
+            roomId: -5,
+            heaterStatus: 'OFF',
+          },
+          {
+            id: -23,
+            name: 'Heater 1 Room 3 EF',
+            roomId: -5,
+            heaterStatus: 'OFF',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: -10,
+    name: 'Mines',
+    outsideTemperature: -11.8,
+    rooms: [
+      {
+        id: -10,
+        name: 'Room 1 Mines',
+        currentTemp: 21.3,
+        targetTemp: null,
+        floor: 1,
+        buildingId: -10,
+        windows: [
+          {
+            id: -12,
+            name: 'Window 3 Room 1 Mines',
+            windowStatus: 'OPENED',
+            roomId: -10,
+          },
+          {
+            id: -11,
+            name: 'Window 2 Room 1 Mines',
+            windowStatus: 'CLOSED',
+            roomId: -10,
+          },
+          {
+            id: -10,
+            name: 'Window 1 Room 1 Mines',
+            windowStatus: 'OPENED',
+            roomId: -10,
+          },
+        ],
+        heaters: [
+          {
+            id: -12,
+            name: 'Heater 3 Room 1 Mines',
+            roomId: -10,
+            heaterStatus: 'ON',
+          },
+          {
+            id: -11,
+            name: 'Heater 2 Room 1 Mines',
+            roomId: -10,
+            heaterStatus: 'OFF',
+          },
+          {
+            id: -10,
+            name: 'Heater 1 Room 1 Mines',
+            roomId: -10,
+            heaterStatus: 'ON',
+          },
+        ],
+      },
+      {
+        id: -9,
+        name: 'Room 2 Mines',
+        currentTemp: 20.6,
+        targetTemp: 21,
+        floor: 2,
+        buildingId: -10,
+        windows: [
+          {
+            id: -14,
+            name: 'Window 2 Room 2 Mines',
+            windowStatus: 'CLOSED',
+            roomId: -9,
+          },
+          {
+            id: -13,
+            name: 'Window 1 Room 2 Mines',
+            windowStatus: 'CLOSED',
+            roomId: -9,
+          },
+        ],
+        heaters: [
+          {
+            id: -14,
+            name: 'Heater 2 Room 2 Mines',
+            roomId: -9,
+            heaterStatus: 'OFF',
+          },
+          {
+            id: -13,
+            name: 'Heater 1 Room 2 Mines',
+            roomId: -9,
+            heaterStatus: 'ON',
+          },
+        ],
+      },
+      {
+        id: -8,
+        name: 'Room 3 Mines',
+        currentTemp: 20.9,
+        targetTemp: 20.5,
+        floor: 2,
+        buildingId: -10,
+        windows: [
+          {
+            id: -18,
+            name: 'Window 4 Room 3 Mines',
+            windowStatus: 'OPENED',
+            roomId: -8,
+          },
+          {
+            id: -17,
+            name: 'Window 3 Room 3 Mines',
+            windowStatus: 'CLOSED',
+            roomId: -8,
+          },
+          {
+            id: -16,
+            name: 'Window 2 Room 3 Mines',
+            windowStatus: 'CLOSED',
+            roomId: -8,
+          },
+          {
+            id: -15,
+            name: 'Window 1 Room 3 Mines',
+            windowStatus: 'CLOSED',
+            roomId: -8,
+          },
+        ],
+        heaters: [
+          {
+            id: -16,
+            name: 'Heater 2 Room 3 Mines',
+            roomId: -8,
+            heaterStatus: 'OFF',
+          },
+          {
+            id: -15,
+            name: 'Heater 1 Room 3 Mines',
+            roomId: -8,
+            heaterStatus: 'ON',
+          },
+        ],
+      },
+    ],
+  },
+]
+
+const initialHeaters = [
+  {
+    id: -17,
+    name: 'Heater 1 Room 1 EF',
+    roomId: -7,
+    heaterStatus: 'ON',
+  },
+  {
+    id: -10,
+    name: 'Heater 1 Room 1 Mines',
+    roomId: -10,
+    heaterStatus: 'ON',
+  },
+  {
+    id: -20,
+    name: 'Heater 1 Room 2 EF',
+    roomId: -6,
+    heaterStatus: 'OFF',
+  },
+  {
+    id: -13,
+    name: 'Heater 1 Room 2 Mines',
+    roomId: -9,
+    heaterStatus: 'ON',
+  },
+  {
+    id: -23,
+    name: 'Heater 1 Room 3 EF',
+    roomId: -5,
+    heaterStatus: 'OFF',
+  },
+  {
+    id: -15,
+    name: 'Heater 1 Room 3 Mines',
+    roomId: -8,
+    heaterStatus: 'ON',
+  },
+  {
+    id: -18,
+    name: 'Heater 2 Room 1 EF',
+    roomId: -7,
+    heaterStatus: 'ON',
+  },
+  {
+    id: -11,
+    name: 'Heater 2 Room 1 Mines',
+    roomId: -10,
+    heaterStatus: 'OFF',
+  },
+  {
+    id: -21,
+    name: 'Heater 2 Room 2 EF',
+    roomId: -6,
+    heaterStatus: 'ON',
+  },
+  {
+    id: -14,
+    name: 'Heater 2 Room 2 Mines',
+    roomId: -9,
+    heaterStatus: 'OFF',
+  },
+  {
+    id: -24,
+    name: 'Heater 2 Room 3 EF',
+    roomId: -5,
+    heaterStatus: 'OFF',
+  },
+  {
+    id: -16,
+    name: 'Heater 2 Room 3 Mines',
+    roomId: -8,
+    heaterStatus: 'OFF',
+  },
+  {
+    id: -19,
+    name: 'Heater 3 Room 1 EF',
+    roomId: -7,
+    heaterStatus: 'ON',
+  },
+  {
+    id: -12,
+    name: 'Heater 3 Room 1 Mines',
+    roomId: -10,
+    heaterStatus: 'ON',
+  },
+  {
+    id: -22,
+    name: 'Heater 3 Room 2 EF',
+    roomId: -6,
+    heaterStatus: 'OFF',
+  },
+]
+
+export { initialBuildings, initialHeaters, initialWindows, initialRooms };
