@@ -78,7 +78,6 @@
 import axios from 'axios';
 import { API_HOST } from '../../config';
 import BuildingsListItem from '../items/BuildingsListItem.vue';
-import { initialBuildings } from '../../initialData';
 
 export default {
   components: {
@@ -87,7 +86,7 @@ export default {
   name: 'BuildingsList',
   data: function () {
     return {
-      buildings: initialBuildings,
+      buildings: [],
       isBuildingCreationVisible: false,
       isProblem: false,
       name: '',

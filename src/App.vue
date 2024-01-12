@@ -23,7 +23,7 @@ export default {
   },
   data: function () {
     return {
-      title: 'TB3 Smart Building Manager Frontend VueJS',
+      title: 'TB3 Smart Building Manager',
     };
   },
 };

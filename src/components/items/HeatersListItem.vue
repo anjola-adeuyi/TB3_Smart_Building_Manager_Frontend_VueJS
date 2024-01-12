@@ -1,33 +1,47 @@
 <template>
-  <div class="heater border border-secondary rounded p-2 mb-2" :class="{expanded: isExpanded}">
-
+  <div
+    class="heater border border-secondary rounded p-2 mb-2"
+    :class="{ expanded: isExpanded }"
+  >
     <template v-if="isModalVisible">
       <div class="modal-background">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-body">
-              Are you sure you want to delete {{heater.name}}?
-            </div>
+            <div class="modal-body">Are you sure you want to delete {{ heater.name }}?</div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" @click="toggleModal">Close</button>
-              <button type="button" class="btn btn-primary" @click="confirmDelete">Confirm</button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                @click="toggleModal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                @click="confirmDelete"
+              >
+                Confirm
+              </button>
             </div>
           </div>
         </div>
       </div>
     </template>
 
-    <div class="top-row d-flex" @click="toggleExpand">
-      <div class="heater-name fw-bold pe-3">{{heater.name}}</div>
-      <div class="room-name text-muted">{{heater.roomName}}</div>
+    <div
+      class="top-row d-flex"
+      @click="toggleExpand"
+    >
+      <div class="heater-name fw-bold pe-3">{{ heater.name }}</div>
+      <div class="room-name text-muted">{{ heater.roomName }}</div>
 
-      <div class="open-status ms-auto" :class="{on: isHeaterOn, off: !isHeaterOn}">
-        <template v-if="isHeaterOn">
-          <span class="icon">&#x2B24;</span> On
-        </template>
-        <template v-else>
-          <span class="icon">&#x2716;</span> Off
-        </template>
+      <div
+        class="open-status ms-auto"
+        :class="{ on: isHeaterOn, off: !isHeaterOn }"
+      >
+        <template v-if="isHeaterOn"> <span class="icon">&#x2B24;</span> On </template>
+        <template v-else> <span class="icon">&#x2716;</span> Off </template>
       </div>
 
       <div class="expand-button ms-2">
@@ -36,33 +50,44 @@
     </div>
 
     <template v-if="isExpanded">
-      <hr/>
+      <hr />
       <div class="details d-flex">
-        <button type="button" class="btn btn-secondary me-2" @click="switchHeater">{{ isHeaterOn ? 'Off' : 'On' }} heater</button>
-        <button type="button" class="btn btn-danger {modal: isModalVisible}" @click="toggleModal">Delete heater</button>
+        <button
+          type="button"
+          class="btn btn-secondary me-2"
+          @click="switchHeater"
+        >
+          {{ isHeaterOn ? 'Off' : 'On' }} heater
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger {modal: isModalVisible}"
+          @click="toggleModal"
+        >
+          Delete heater
+        </button>
       </div>
     </template>
-
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import {API_HOST} from '../../config';
+import { API_HOST } from '../../config';
 
 export default {
   name: 'HeatersListItem',
   props: ['heater'],
-  data: function() {
+  data: function () {
     return {
       isExpanded: false,
-      isModalVisible: false
-    }
+      isModalVisible: false,
+    };
   },
   computed: {
-    isHeaterOn: function() {
-      return this.heater.heaterStatus !== "OFF";
-    }
+    isHeaterOn: function () {
+      return this.heater.heaterStatus !== 'OFF';
+    },
   },
   methods: {
     toggleExpand() {
@@ -73,24 +98,23 @@ export default {
     },
     async switchHeater() {
       try {
-        let response = await axios.put(
-            `${API_HOST}/api/heaters/${this.heater.id}/switch`)
+        let response = await axios.put(`${API_HOST}/api/heaters/${this.heater.id}/switch`);
         let updatedHeater = response.data;
-        this.$emit("heater-updated", updatedHeater);
+        this.$emit('heater-updated', updatedHeater);
       } catch (error) {
-        console.error("Error fetching data : " + error);
+        console.error('Error fetching data : ' + error);
       }
     },
     async deleteHeater() {
       await axios.delete(`${API_HOST}/api/heaters/${this.heater.id}`);
-      this.$emit("heater-delete", this.heater);
+      this.$emit('heater-delete', this.heater);
     },
     async confirmDelete() {
       await this.deleteHeater();
       this.toggleModal();
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -107,7 +131,7 @@ export default {
     }
   }
 
-  &.off{
+  &.off {
     color: #dc3545;
   }
 }

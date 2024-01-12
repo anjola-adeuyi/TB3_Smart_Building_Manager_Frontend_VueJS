@@ -84,7 +84,6 @@
 import axios from 'axios';
 import { API_HOST } from '../../config';
 import HeatersListItem from '../items/HeatersListItem.vue';
-import { initialHeaters, initialRooms } from '../../initialData';
 
 export default {
   components: {
@@ -94,9 +93,9 @@ export default {
   data: function () {
     return {
       /* Initialize heaters with an empty array, while waiting for actual data to be retrieved from the API */
-      heaters: initialHeaters,
+      heaters: [],
       isHeaterCreationVisible: false,
-      rooms: initialRooms,
+      rooms: [],
       room: '',
       name: '',
       isProblem: false,

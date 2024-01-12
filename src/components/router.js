@@ -5,15 +5,16 @@ import BuildingsComponent from './lists/BuildingsList.vue';
 import HeatersComponent from './lists/HeatersList.vue';
 
 const routes = [
-    { path: '/windows', component: WindowsComponent },
-    { path: '/rooms', component: RoomsComponent },
-    { path: '/buildings', component: BuildingsComponent },
-    { path: '/heaters', component: HeatersComponent }
+  { path: '/', redirect: '/windows' },
+  { path: '/windows', component: WindowsComponent, name: 'windows', alais: '/' },
+  { path: '/rooms', component: RoomsComponent, name: 'rooms' },
+  { path: '/buildings', component: BuildingsComponent, name: 'buildings' },
+  { path: '/heaters', component: HeatersComponent, name: 'heaters' },
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes,
+  history: createWebHistory(),
+  routes,
 });
 
 export default router;

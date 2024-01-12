@@ -84,7 +84,6 @@
 import axios from 'axios';
 import { API_HOST } from '../../config';
 import WindowsListItem from '../items/WindowsListItem.vue';
-import { initialWindows, initialRooms } from '../../initialData';
 
 export default {
   components: {
@@ -94,9 +93,9 @@ export default {
   data: function () {
     return {
       /* Initialize windows while waiting to be retrieved from the API */
-      windows: initialWindows,
+      windows: [],
       isWindowCreationVisible: false,
-      rooms: initialRooms,
+      rooms: [],
       room: '',
       name: '',
       isProblem: false,

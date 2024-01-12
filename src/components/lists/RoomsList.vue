@@ -110,7 +110,6 @@
 import axios from 'axios';
 import { API_HOST } from '../../config';
 import RoomsListItem from '../items/RoomsListItem.vue';
-import { initialBuildings, initialRooms } from '../../initialData';
 
 export default {
   components: {
@@ -119,8 +118,8 @@ export default {
   name: 'RoomsList',
   data: function () {
     return {
-      rooms: initialRooms,
-      buildings: initialBuildings,
+      rooms: [],
+      buildings: [],
       isRoomCreationVisible: false,
       isProblem: false,
       name: '',
