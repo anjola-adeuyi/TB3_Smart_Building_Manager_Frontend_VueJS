@@ -6,6 +6,11 @@
 
 TB3 Smart Building Manager Frontend VueJS App manages the buildings, rooms, windows
 
+### course dev web tp 4 vuejs emse1 assignment submission with additional features and functionalities
+
+![assets/front-1.png](assets/front-1.png)
+![assets/front-2.png](assets/front-2.png)
+
 ## Prerequisites
 
 Before you begin, ensure you have installed the following:
@@ -30,9 +35,6 @@ The [backend repository](https://github.com/anjola-adeuyi/TB3_Smart_Building_Man
 - Rooms: [http://automacorp-anjola-adeuyi.cleverapps.io/api/rooms](http://automacorp-anjola-adeuyi.cleverapps.io/api/rooms)
 - Heaters: [http://automacorp-anjola-adeuyi.cleverapps.io/api/heaters](http://automacorp-anjola-adeuyi.cleverapps.io/api/heaters)
 - Windows: [http://automacorp-anjola-adeuyi.cleverapps.io/api/windows](http://automacorp-anjola-adeuyi.cleverapps.io/api/windows)
-
-![assets/front-1.png](assets/front-1.png)
-![assets/front-2.png](assets/front-2.png)
 
 ## Project setup
 
