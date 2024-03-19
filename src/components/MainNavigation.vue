@@ -7,6 +7,12 @@
     >
       API Swagger docs link
     </button>
+    <router-link
+      to="/measurement"
+      class="btn btn-primary measurement-button"
+    >
+      Measurement
+    </router-link>
   </div>
   <p class="paragraph">
     Frontend - VueJS, Backend - Spring Boot, Java 17, and Gradle, Database - H2 Database, API Documnetation - Swagger
@@ -83,6 +89,7 @@ export default {
   display: flex;
   justify-content: center;
   padding: 20px;
+  gap: 20px;
 }
 
 .swagger-button {
@@ -91,6 +98,20 @@ export default {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
+}
+
+.measurement-button {
+  background-color: transparent;
+  color: #045b0f;
+  padding: 10px 20px;
+  border: 1px solid #045b0f;
+  border-radius: 5px;
+}
+
+.measurement-button:hover {
+  background-color: #aaf5b4;
+  color: #045b0f;
+  border: none;
 }
 
 .swagger-button:hover {

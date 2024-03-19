@@ -111,6 +111,9 @@ export default {
       this.rooms = response2.data;
       console.log('Rooms:', this.rooms);
 
+      let response3 = await axios.get(`${API_HOST}/api/sensor`);
+      console.log('Sensors:', response3.data);
+
       // eslint-disable-next-line no-console
       console.log({ this: this });
     } catch (error) {
