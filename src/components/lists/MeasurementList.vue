@@ -17,6 +17,20 @@
     </div>
 
     <div
+      class="time-range"
+      v-if="measurements.length > 0"
+    >
+      <div class="time-card">
+        <div class="card-title">Earliest Time</div>
+        <div class="card-content">{{ earliestTime }}</div>
+      </div>
+      <div class="time-card">
+        <div class="card-title">Oldest Time</div>
+        <div class="card-content">{{ oldestTime }}</div>
+      </div>
+    </div>
+
+    <div
       v-if="measurements.length > 0"
       class="chart-container"
     >
@@ -62,10 +76,13 @@ export default {
     return {
       measurements: [],
       error: null,
+      earliestTime: '',
+      oldestTime: '',
     };
   },
   created() {
     this.fetchMeasurementData();
+    this.fetchTimeRange();
   },
   methods: {
     async handleFileUpload(event) {
@@ -151,9 +168,17 @@ export default {
       });
     },
     formatTime(time) {
-      // Convert parsedTime to a human-readable format
       const parsedTime = new Date(time);
       return parsedTime.toLocaleString(); // Customize the format as needed
+    },
+    async fetchTimeRange() {
+      try {
+        const response = await axios.get(`${API_HOST}/api/sensor/time-range`);
+        this.earliestTime = response.data.earliestTime;
+        this.oldestTime = response.data.oldestTime;
+      } catch (error) {
+        console.error('Error fetching time range:', error);
+      }
     },
   },
   mounted() {
@@ -178,6 +203,29 @@ export default {
 .error-message {
   color: red;
 }
+
+/* Oldest and Earliest Time */
+
+.time-range {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+.time-card {
+  width: calc(50% - 10px);
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.card-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.card-content {
+  font-size: 16px;
+}
+
 /* Additional CSS styles for table */
 table {
   width: 100%;
